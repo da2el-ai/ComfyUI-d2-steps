@@ -1,5 +1,5 @@
 
-class D2_Steps:
+class D2_RefinerSteps:
     def __init__(self):
         pass
 
@@ -7,15 +7,15 @@ class D2_Steps:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "steps": ("INT", {"default": 25}),
-                "start": ("INT", {"default": 0}),
-                "end": ("INT", {"default": 5}),
+                "steps": ("INT", {"default": 25, "min":0}),
+                "start": ("INT", {"default": 0, "min":0}),
+                "end": ("INT", {"default": 5, "min":0}),
             }
         }
     RETURN_TYPES = ("INT", "INT", "INT", "INT",)
     RETURN_NAMES = ("steps", "start", "end", "refiner_start",)
     FUNCTION = "steps"
-    CATEGORY = "utils"
+    CATEGORY = "D2"
 
     def steps(self, steps, start, end):
         refiner_start = end + 1
