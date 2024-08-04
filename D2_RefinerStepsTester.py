@@ -3,11 +3,9 @@ class D2_RefinerStepsTester:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                # 同じ値でも再実行するために必要
-                "seed": ("INT:seed", {}),
+                "steps": ("INT", {"forceInput":True}),
             },
             "optional": {
-                "steps": ("INT", {"forceInput":True}),
                 "start": ("INT", {"forceInput":True}),
                 "end": ("INT", {"forceInput":True}),
                 "refiner_start": ("INT", {"forceInput":True}),
@@ -21,6 +19,7 @@ class D2_RefinerStepsTester:
     CATEGORY = "D2"
 
 
-    def execute(self, seed, steps=0, start=0, end=0, refiner_start=0):
+    # def execute(self, seed, steps=0, start=0, end=0, refiner_start=0):
+    def execute(self, steps=0, start=0, end=0, refiner_start=0):
         text = f"stesps: {steps}\nstart: {start}\nend: {end}\nrefiner_start: {refiner_start}"
         return {"ui": {"text": text}, "result": (text,)}
